@@ -44,4 +44,14 @@ class TaskController extends Controller
 
     return redirect('/tasks')->with('success', 'Task created successfully!');
     }
+
+    public function complete($id)
+    {
+        $task = Task::findOrFail($id);
+
+         $task->is_completed = true;
+        $task->save();
+
+        return redirect('/tasks');
+    }
 }
