@@ -1,11 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\TaskController;
 
-Route::get('/dashboard', function () {
-    return "This is your Task Manager Dashboard.";
-});
+
+Route::get('/tasks', [TaskController::class, 'index']);
+Route::get('/tasks/{id}', [TaskController::class, 'show']);
